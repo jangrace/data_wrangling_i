@@ -20,3 +20,28 @@ litters_df = read_csv("./data/FAS_litters.csv")
 litters_df = janitor::clean_names(litters_df)
 ```
 
+## Take a look at the data
+
+Option 1:
+```{r}
+litters_df
+```
+
+Option 2: head only gives first 6 rows
+```{r}
+head(litters_df)
+```
+
+Option 3: tail only gives last 6 rows
+```{r}
+tail(litters_df)
+```
+
+Option 4: skim --> gives mean, sd, etc.
+```{r}
+skimr::skim(litters_df)
+```
+
+Option 5: View(litters_df) within the console
+
+
