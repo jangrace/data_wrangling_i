@@ -7,7 +7,7 @@ output: github_document
 library(tidyverse)
 ```
 
-## Read in some data
+## Read in some data (IMPORTING CSV FILE)
 
 Read in the litters dataset (IMPORTING CSV FILE)
 1. litters_df = imported CSV will become a data frame that is named "litters_df"
@@ -44,4 +44,14 @@ skimr::skim(litters_df)
 
 Option 5: View(litters_df) within the console
 
+## Options to read_csv
 
+1. skip = 10 --> skip the first 10 rows
+```{r}
+litters_df = read_csv("./data/FAS_litters.csv", skip = 10, col_names = FALSE)
+```
+
+2. specifying missing values: blank, NA, 999, . = missing values
+```{r}
+litters_df = read_csv("./data/FAS_litters.csv", na = c("","NA", 999,"."))
+```
