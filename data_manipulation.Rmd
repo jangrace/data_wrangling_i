@@ -120,3 +120,17 @@ Below example would mean "select those in group that are either Con7 or Mod8.
 filter(litters_df, group %in% c("Con7", "Mod8"))
 ```
 
+# DPLYR MUTATE --> modify existing var or create new var
+
+## Creating new variables
+1. create a new variable: wt_gain
+2. change group variable: change everything in group variable to lowercase
+
+```{r}
+mutate(
+  litters_df,
+  wt_gain = gd18_weight - gd0_weight,
+  group = str_to_lower(group))
+```
+
+
