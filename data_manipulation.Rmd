@@ -16,6 +16,8 @@ litters_df = read_csv("./data/FAS_litters.csv")
 litters_df = janitor::clean_names(litters_df)
 ```
 
+# DPLYR SELECT
+
 ## Dplyr (Select): choose columns of interest 
 
 1. For select, first specify dataframe
@@ -76,4 +78,45 @@ make litter_number come to the front
 relocate(litters_df, litter_number)
 ```
 
+# DPLYR FILTER --> requires conditions
+
+## Greater than, GE to, equal to
+
+1. example 1: only select subjects whose gd0_weight is less than 22
+```{r}
+filter(litters_df, gd0_weight < 22)
+```
+
+2. example 2: only select those whose gd0_weight is ge to 22
+```{r}
+filter(litters_df, gd0_weight >= 22)
+```
+
+3. example 3: select those whose gd_of_birth is equal to 20
+```{r}
+filter(litters_df, gd_of_birth == 20)
+```
+
+## Negation statements
+
+1. gd_of_birth not equal to 20
+```{r}
+filter(litters_df, !(gd_of_birth == 20))
+```
+
+2. two conditions using and
+```{r}
+filter(litters_df, gd0_weight >= 22, gd_of_birth ==20)
+```
+
+3. filtering charater variables
+```{r}
+filter(litters_df, group == "Mod8")
+```
+
+4. filtering using "this or that"
+Below example would mean "select those in group that are either Con7 or Mod8.
+```{r}
+filter(litters_df, group %in% c("Con7", "Mod8"))
+```
 
