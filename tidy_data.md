@@ -91,3 +91,37 @@ analysis_result %>%
     ##   <chr> <dbl> <dbl>
     ## 1 tx      4       8
     ## 2 p       3.5     4
+
+## stacking tables together (aka merging tables)
+
+### binding rows
+
+Using LotR data. 1. import each table
+
+``` r
+fellowship_ring =
+  readxl::read_excel("./data/LotR_Words.xlsx", range = "B3:D6") %>%
+  mutate(movie = "fellowship_ring")
+
+two_towers =
+  readxl::read_excel("./data/LotR_Words.xlsx", range = "F3:H6") %>%
+  mutate(movie = "two_towers")
+
+return_king =
+  readxl::read_excel("./data/LotR_Words.xlsx", range = "J3:L6") %>%
+  mutate(movie = "return_king")
+```
+
+2.  bind all the rows together
+
+``` r
+lotr_tidy = 
+    bind_rows(fellowship_ring, two_towers, return_king) %>% 
+    janitor::clean_names() %>% 
+    relocate(movie) %>% 
+    pivot_longer(
+      female:male,
+      names_to = "gender",
+      values_to = "words"
+    )
+```
