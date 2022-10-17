@@ -83,3 +83,16 @@ pulse_df
 ## Comparison with Base R
 
 1. Always use read_csv NOT read.csv. read.csv will read in additional unnecessary info (i.e., space, comma)
+
+## Exporting data
+
+Export the mlb sub-table.
+
+1. write_csv = code
+2. specify which data frame (mlb_df)
+3. specify where the export should be saved and using what name (./data/mlb_subtable.csv)
+
+```{r}
+write_csv(mlb_df, "./data/mlb_subtable.csv")
+```
+
