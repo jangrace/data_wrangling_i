@@ -16,4 +16,64 @@ litters_df = read_csv("./data/FAS_litters.csv")
 litters_df = janitor::clean_names(litters_df)
 ```
 
+## Dplyr (Select): choose columns of interest 
+
+1. For select, first specify dataframe
+2. Then specify columns you'd like to keep. In this example, we want to keep "group" and "litter_number" column.
+```{r}
+select(litters_df, group, litter_number)
+```
+
+1. select then specify dataframe (litters_df)
+2. specify columns to keep (keep columns from gd0_weight to gd_of_birth)
+```{r}
+select(litters_df, group, gd0_weight:gd_of_birth)
+```
+
+## Dplyr (Select): choose columns you'd like to remove
+
+1. specify dataframe (litters_df)
+2. indicate column you'd like to remove by placing "-" before column name (ex: -litter_number = remove litter number column)
+
+```{r}
+select(litters_df, -litter_number)
+```
+
+## Renaming columns
+
+* OPTION 1: Use select columns and rename selected columns
+
+```{r}
+select(litters_df, GROUP = group, LITTer_NUmBer = litter_number)
+```
+
+* OPTION 2: Use rename to only rename columns and not select
+
+```{r}
+rename(litters_df, GROUP = group, LITTer_NUmBer = litter_number)
+```
+
+## Select variable of interest that starts or ends with certain term
+
+* select everything that starts with gd
+```{r}
+select(litters_df, starts_with("gd"))
+```
+
+## Move variable of interest to the front
+
+* OPTION 1: Using SELECT
+move column of interest to the front (i.e., make litter_number be the first column)
+
+```{r}
+select(litters_df, litter_number, everything())
+```
+
+* OPTION 2: Using RELOCATE
+make litter_number come to the front
+
+```{r}
+relocate(litters_df, litter_number)
+```
+
 
