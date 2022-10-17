@@ -80,3 +80,6 @@ pulse_df = janitor::clean_names(pulse_df)
 pulse_df
 ```
 
+## Comparison with Base R
+
+1. Always use read_csv NOT read.csv. read.csv will read in additional unnecessary info (i.e., space, comma)

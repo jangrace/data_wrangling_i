@@ -256,3 +256,8 @@ pulse_df
     ##  9 10091  76.0 male              0             3             4             0
     ## 10 10092  74.2 female           10             2            11             6
     ## # … with 1,077 more rows
+
+## Comparison with Base R
+
+1.  Always use read_csv NOT read.csv. read.csv will read in additional
+    unnecessary info (i.e., space, comma)
