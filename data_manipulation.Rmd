@@ -6,3 +6,14 @@ output: github_document
 ```{r setup}
 library(tidyverse)
 ```
+
+## Load FAS Litters Data
+
+1. Load csv data
+2. Clean variables
+```{r}
+litters_df = read_csv("./data/FAS_litters.csv")
+litters_df = janitor::clean_names(litters_df)
+```
+
+
