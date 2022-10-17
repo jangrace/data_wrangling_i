@@ -55,3 +55,28 @@ litters_df = read_csv("./data/FAS_litters.csv", skip = 10, col_names = FALSE)
 ```{r}
 litters_df = read_csv("./data/FAS_litters.csv", na = c("","NA", 999,"."))
 ```
+
+## IMPORTING (READING IN) EXCEL FILE
+
+```{r}
+library(readxl)
+mlb_df = read_excel("./data/mlb11.xlsx")
+mlb_df
+```
+
+1. specifying range of cells to be read in
+```{r}
+mlb_df = read_excel("./data/mlb11.xlsx", range = "A1:F7")
+mlb_df
+```
+
+## IMPORTING SAS FILE
+
+```{r}
+library(haven)
+pulse_df = read_sas("./data/public_pulse_data.sas7bdat")
+pulse_df
+pulse_df = janitor::clean_names(pulse_df)
+pulse_df
+```
+
