@@ -122,7 +122,7 @@ filter(litters_df, group %in% c("Con7", "Mod8"))
 
 # DPLYR MUTATE --> modify existing var or create new var
 
-## Creating new variables
+## Creating new variables, modifying variables
 1. create a new variable: wt_gain
 2. change group variable: change everything in group variable to lowercase
 
@@ -133,4 +133,15 @@ mutate(
   group = str_to_lower(group))
 ```
 
+# DPLYR ARRANGE --> putting things in order
+
+1. example 1: arrange by pups_born_alive in ascending order
+```{r}
+arrange(litters_df, pups_born_alive)
+```
+
+2. example 2: arrange 2 variables
+```{r}
+arrange(litters_df, pups_born_alive, gd0_weight)
+```
 
