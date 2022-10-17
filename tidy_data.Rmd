@@ -7,7 +7,7 @@ output: github_document
 library(tidyverse)
 ```
 
-## 'povot_longer'
+## 'pivot_longer'
 
 Load the PULSE data
 
@@ -53,4 +53,26 @@ pulse_data =
     mutate(visit = recode(visit, "bl" = "00m"))
 ```
 
+## 'pivot wider'
 
+Make up some data!
+
+1. make data using tibble
+2. using pivot wider:
+    a. get column names from "time"
+    b. get values for time from "mean"
+
+```{r}
+analysis_result =
+  tibble(
+    group = c("tx", "tx", "p", "p"),
+    time = c("pre", "post", "pre", "post"),
+    mean = c(4, 8, 3.5, 4)
+  )
+
+analysis_result %>% 
+  pivot_wider(
+    names_from = "time",
+    values_from = "mean"
+)
+```

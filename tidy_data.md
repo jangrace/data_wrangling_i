@@ -14,7 +14,7 @@ library(tidyverse)
     ## ✖ dplyr::filter() masks stats::filter()
     ## ✖ dplyr::lag()    masks stats::lag()
 
-## ‘povot_longer’
+## ‘pivot_longer’
 
 Load the PULSE data
 
@@ -61,3 +61,33 @@ pulse_data =
     relocate(id, visit) %>% 
     mutate(visit = recode(visit, "bl" = "00m"))
 ```
+
+## ‘pivot wider’
+
+Make up some data!
+
+1.  make data using tibble
+2.  using pivot wider:
+    1.  get column names from “time”
+    2.  get values for time from “mean”
+
+``` r
+analysis_result =
+  tibble(
+    group = c("tx", "tx", "p", "p"),
+    time = c("pre", "post", "pre", "post"),
+    mean = c(4, 8, 3.5, 4)
+  )
+
+analysis_result %>% 
+  pivot_wider(
+    names_from = "time",
+    values_from = "mean"
+)
+```
+
+    ## # A tibble: 2 × 3
+    ##   group   pre  post
+    ##   <chr> <dbl> <dbl>
+    ## 1 tx      4       8
+    ## 2 p       3.5     4
